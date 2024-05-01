@@ -1,0 +1,53 @@
+{% extends 'admin_home_index.html' %}
+{% block body %}
+<body><form action="/myapp/changepwdpost/" method="post"><table class="table table-bordered">
+    {% csrf_token %}
+  <tr>
+    <th>Current password</th>
+    <td><input type="text" name="textfield" id="pass" class="form-control" required /></td>
+  </tr>
+  <tr>
+    <th>New password</th>
+    <td><input type="text" name="textfield2" id="pass1" class="form-control" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required /></td>
+  </tr>
+  <tr>
+    <th>Confirm password</th>
+    <td><input type="text" name="textfield3" id="pass2" class="form-control" required/></td>
+  </tr>
+  <tr>
+    <td align="center" colspan="2"><input type="submit" name="button" id="sub" value="Submit" class="btn btn-success" /></td>
+  </tr>
+</table>
+
+</form>
+</body>
+    <script src="/static/jquery/jquery.js" type= "application/javascript">
+</script>
+<script>
+   $(document).ready(function () {
+
+       $("#sub").hide();
+       $("#pass2").keyup(function () {
+           var a=$("#pass1").val()
+           var b=$("#pass2").val()
+           var c=$("#pass").val()
+           if (a !=b){
+                       document.getElementById('hint').innerHTML = "not same!!retype";
+            inputElement.css("border-color", "red"); // Change the border color to red
+                 }
+           else if (a==c){
+                                      document.getElementById('hint').innerHTML = " same!!retype";
+                                      document.getElementById('hint').style.color="red"
+           }
+           else {
+       $("#sub").show();
+
+                  document.getElementById('hint').innerHTML = "ok";
+                                                        document.getElementById('hint').style.color="green"           }
+       });
+
+   })
+</script>
+
+{% endblock %}
+

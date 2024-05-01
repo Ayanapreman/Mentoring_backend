@@ -1,0 +1,47 @@
+{% extends 'admin_home_index.html' %}
+{% block body %}
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+<form action="/myapp/viewemotiongraph_post/" method="post">
+<input type="hidden" name="id" value="{{ id }}">
+    <table class="table table-bordered">
+        <tr>
+            <td><label for="from_">From</label> <input type="date" name="from_" id="from_" class="form-control" required></td>
+            <td><label for="to_">To</label> <input type="date" name="to_" id="to_" class="form-control" required></td>
+            <td><input type="Submit" class="btn btn-info"></td>
+        </tr>
+    </table>
+</form>
+<canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+
+<script>
+const yValues  = [{{ s.0 }}, {{ s.1 }},{{ s.2 }},{{ s.3 }}];
+const xValues = ["{{ e.0 }}", "{{ e.1 }}", "{{ e.2 }}", "{{ e.3 }}"];
+const barColors = [
+  "#b91d47",
+  "#00aba9",
+  "#2b5797",
+  "#e8c3b9",
+
+];
+
+new Chart("myChart", {
+  type: "pie",
+  data: {
+    labels: xValues,
+    datasets: [{
+      backgroundColor: barColors,
+      data: yValues
+    }]
+  },
+  options: {
+    title: {
+      display: true,
+      text: "Diary Emotion graph"
+    }
+  }
+});
+</script>
+
+{% endblock %}
