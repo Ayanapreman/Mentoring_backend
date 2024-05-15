@@ -146,6 +146,44 @@ def viewemotiongraph(request,id):
 
     return render(request, "emotion.html", {'s': s, 'e': emotion_dict, 'id':id})
 
+
+
+def viewfaceemotiongraph(request,id):
+    emotion_dict = ["Angry","Disgusted","Fearful","Happy","Neutral","Sad", "Surprised" ]
+
+    s = []
+    for i in emotion_dict:
+
+        s.append(len(FaceEmotion.objects.filter(USER_id=id, emotion=i)))
+
+    # print(s, emotion_dict)
+
+    return render(request, "emotionface.html", {'s': s, 'e': emotion_dict, 'id':id})
+
+
+def viewemotiongraph_face_post(request):
+    from_ = request.POST['from_']
+    to_ = request.POST['to_']
+    id = request.POST['id']
+    emotion_dict = ["Angry", "Disgusted", "Fearful", "Happy", "Neutral", "Sad", "Surprised"]
+
+    s = []
+    for i in emotion_dict:
+        s.append(len(FaceEmotion.objects.filter(USER_id=id, emotion=i,date__range=[from_,to_])))
+
+    # print(s, emotion_dict)
+
+    return render(request, "emotionface.html", {'s': s, 'e': emotion_dict, 'id': id})
+
+
+
+
+
+
+
+
+
+
 def viewemotiongraph_post(request):
     from_ = request.POST['from_']
     to_ = request.POST['to_']

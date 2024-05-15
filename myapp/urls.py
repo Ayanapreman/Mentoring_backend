@@ -63,6 +63,8 @@ urlpatterns = [
 
 
     path('ConfusionMatrix/', views.ConfusionMatrix),
+    path('viewfaceemotiongraph/<id>', views.viewfaceemotiongraph),
+    path('viewemotiongraph_face_post/', views.viewemotiongraph_face_post),
 
 
 

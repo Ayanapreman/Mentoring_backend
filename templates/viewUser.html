@@ -8,24 +8,28 @@
   <tr>
     <th>Sl.no</th>
     <th>Name</th>
+       <th>Gender</th>
+         <th>Dob</th>
     <th>Email</th>
-    <th>DOB</th>
-      <th>Phone Number</th>
+      <th>Phone</th>
     <th>Place</th>
-    <th>Gender</th>
+
 
   </tr>
     {% for i in data %}
   <tr>
     <td>{{ forloop.counter }}</td>
     <td>&nbsp;{{ i.name}}</td>
+       <td>&nbsp;{{ i.gender }}</td>
+         <td>&nbsp;{{ i.dob }}</td>
     <td>&nbsp;{{ i.email }}</td>
-      <td>&nbsp;{{ i.dob }}</td>
+
       <td>&nbsp;{{ i.phonenumber }}</td>
       <td>&nbsp;{{ i.place }}</td>
-      <td>&nbsp;{{ i.gender }}</td>
-      <td><a href="/myapp/viewemotiongraph/{{ i.id }}">Graph</a></td>
-      <td><a href="/myapp/sendtips/{{ i.id }}">Tips</a></td>
+
+      <td><a href="/myapp/viewemotiongraph/{{ i.id }}" class="btn btn-warning">DiaryGraph</a></td>
+      <td><a href="/myapp/viewfaceemotiongraph/{{ i.id }}" class="btn btn-danger">FaceGraph</a></td>
+      <td><a href="/myapp/sendtips/{{ i.id }}" class="btn btn-success">Tips</a></td>
 
 
 

@@ -3,12 +3,12 @@
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
-<form action="/myapp/viewemotiongraph_post/" method="post">
+<form action="/myapp/viewemotiongraph_face_post/" method="post">
 <input type="hidden" name="id" value="{{ id }}">
     <table class="pull-left">
         <tr>
             <td><label for="from_">From</label></td> <td> <input type="date" name="from_" id="from_" class="form-control" required></td>
-            <td><label for="to_">To</label></td><td> <input type="date" name="to_" id="to_" class="form-control" required></td>
+            <td><label for="to_">To</label></td> <td><input type="date" name="to_" id="to_" class="form-control" required></td>
             <td><input type="Submit" class="btn btn-info"></td>
         </tr>
     </table>
@@ -16,13 +16,16 @@
 <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
 
 <script>
-const yValues  = [{{ s.0 }}, {{ s.1 }},{{ s.2 }},{{ s.3 }}];
-const xValues = ["{{ e.0 }}", "{{ e.1 }}", "{{ e.2 }}", "{{ e.3 }}"];
+const yValues  = [{{ s.0 }}, {{ s.1 }},{{ s.2 }},{{ s.3 }} ,{{ s.4 }} , {{ s.5 }} , {{ s.6 }}];
+const xValues = ["{{ e.0 }}", "{{ e.1 }}", "{{ e.2 }}", "{{ e.3 }}"  ,"{{ e.4 }}" , "{{ e.5 }}" , "{{ e.6 }}"];
 const barColors = [
   "#b91d47",
   "#00aba9",
   "#2b5797",
   "#e8c3b9",
+  "#2548e8",
+  "#dbe817",
+  "#c217e8",
 
 ];
 
@@ -38,7 +41,7 @@ new Chart("myChart", {
   options: {
     title: {
       display: true,
-      text: "Diary Emotion graph"
+      text: "Face Emotion graph"
     }
   }
 });
